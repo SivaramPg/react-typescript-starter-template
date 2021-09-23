@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-function App() {
+import { GlobalStyles } from 'components/common/styles/GlobalStyles';
+
+const queryClient = new QueryClient();
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <GlobalStyles />
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <h1>React Typescript Starter Template</h1>}
+            />
+          </Switch>
+        </Router>
+      </QueryClientProvider>
+    </React.Fragment>
   );
-}
+};
 
 export default App;
