@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { GlobalStyles } from 'components/common/styles/GlobalStyles';
@@ -11,15 +11,12 @@ const App = (): JSX.Element => {
     <React.Fragment>
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <h1>React Typescript Starter Template</h1>}
-            />
-          </Switch>
-        </Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<h1>React Typescript Starter Template</h1>}
+          />
+        </Routes>
       </QueryClientProvider>
     </React.Fragment>
   );
